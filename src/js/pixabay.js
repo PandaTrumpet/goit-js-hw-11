@@ -30,6 +30,8 @@ load.style.display = 'none'
 function hadler(event) {
   
   event.preventDefault();
+  list.style.marginTop = '60px'
+  
   load.style.display = 'inline-block'
  
   const QUERY = input.value.trim();
@@ -94,6 +96,7 @@ function hadler(event) {
     .finally(()=>{
       setTimeout(()=>{
         load.style.display = 'none'
+        list.style.marginTop = '20px'
       },600)
       
     })
