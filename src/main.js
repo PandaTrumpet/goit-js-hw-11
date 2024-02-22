@@ -42,10 +42,10 @@ function handler(event) {
     })
     .catch(error => console.log(error))
     .finally(() => {
-      setTimeout(() => {
+   
         load.style.display = 'none';
         list.style.marginTop = '20px';
-      }, 600);
+    
     });
 
   input.value = '';
