@@ -32,6 +32,11 @@ function hadler(event) {
         return hadlerError();
       } else {
         list.innerHTML = createMurkup(images);
+        const lightbox = new SimpleLightbox('.todo-list a.galery-link', {
+            captionsData: "alt",
+            captionDelay:250,
+        });
+        
       }
     })
     .catch(error => console.log(error))
@@ -61,7 +66,3 @@ function hadlerError() {
   });
 }
 
-const lightbox = new SimpleLightbox('.todo-list a.galery-link', {
-    captionsData: "alt",
-    captionDelay:250,
-});
