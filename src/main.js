@@ -14,7 +14,6 @@ const input = document.querySelector('.input-text');
 
 const form = document.querySelector('.main-form');
 
-const btn = document.querySelector('.btn');
 const load = document.querySelector('.loading');
 
 load.style.display = 'none';
@@ -63,5 +62,6 @@ function hadlerError() {
 }
 
 const lightbox = new SimpleLightbox('.todo-list a.galery-link', {
-  captionDelay: 250,
+    captionsData: "alt",
+    captionDelay:250,
 });
