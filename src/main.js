@@ -18,7 +18,7 @@ const load = document.querySelector('.loading');
 
 load.style.display = 'none';
 
-function hadler(event) {
+function handler(event) {
   event.preventDefault();
   list.style.marginTop = '60px';
 
@@ -29,14 +29,15 @@ function hadler(event) {
       console.log(data);
       const images = data.hits;
       if (images.length === 0) {
-        return hadlerError();
+        list.innerHTML =''
+        return handlerError();
       } else {
         list.innerHTML = createMurkup(images);
         const lightbox = new SimpleLightbox('.todo-list a.galery-link', {
             captionsData: "alt",
             captionDelay:250,
         });
-        
+        lightbox.refresh();
       }
     })
     .catch(error => console.log(error))
@@ -48,12 +49,12 @@ function hadler(event) {
     });
 
   input.value = '';
-  lightbox.refresh();
+  
 }
 
-form.addEventListener('submit', hadler);
+form.addEventListener('submit', handler);
 
-function hadlerError() {
+function handlerError() {
   iziToast.error({
     maxWidth: '432px',
     messageSize: '16px',
