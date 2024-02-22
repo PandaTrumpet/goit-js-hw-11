@@ -10,7 +10,7 @@ import createMurkup from './js/render-function';
 import getFotos from './js/pixabay';
 
 const list = document.querySelector('.todo-list');
-const input = document.querySelector('.input-text');
+const searchInput = document.querySelector('.input-text');
 
 const form = document.querySelector('.main-form');
 
@@ -24,32 +24,28 @@ function handler(event) {
 
   load.style.display = 'inline-block';
 
-  getFotos(input.value)
+  getFotos(searchInput.value)
     .then(data => {
-      console.log(data);
       const images = data.hits;
       if (images.length === 0) {
-        list.innerHTML =''
+        list.innerHTML = '';
         return handlerError();
       } else {
         list.innerHTML = createMurkup(images);
         const lightbox = new SimpleLightbox('.todo-list a.galery-link', {
-            captionsData: "alt",
-            captionDelay:250,
+          captionsData: 'alt',
+          captionDelay: 500,
         });
         lightbox.refresh();
       }
     })
     .catch(error => console.log(error))
     .finally(() => {
-   
-        load.style.display = 'none';
-        list.style.marginTop = '20px';
-    
+      load.style.display = 'none';
+      list.style.marginTop = '20px';
     });
 
-  input.value = '';
-  
+  searchInput.value = '';
 }
 
 form.addEventListener('submit', handler);
@@ -66,4 +62,3 @@ function handlerError() {
     backgroundColor: '#ed6f7c',
   });
 }
-
